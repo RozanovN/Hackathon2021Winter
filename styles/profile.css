@@ -8,3 +8,116 @@
   display: block;
   margin: 0 auto;
 }
+
+#content-container {
+  border: white 1px solid;
+  border-radius: 10px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  margin: 10px;
+}
+
+.input-label {
+  color: white;
+  margin-bottom: 5px;
+}
+
+input[type=text] {
+  width: 93%;
+  color: white;
+  background-color:#303239;
+  border: #414249 1px solid;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+input[type=text]:focus {
+  outline: #FFC043 solid 1px;
+}
+
+.radio-field {
+  background-color:#303239;
+  border: #414249 1px solid;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.status {
+  margin: 0;
+  margin-left: 15px;
+}
+
+select {
+  background-color:#303239;
+  border: #414249 1px solid;
+  border-radius: 10px;
+  padding: 8px;
+  width: 100%;
+  color: white;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
+}
+
+p {
+  color: white;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: white;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  border: #414249 3px solid;
+  background-color: #303239;
+  border-radius: 50%;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #FFC043;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}

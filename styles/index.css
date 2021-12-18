@@ -63,20 +63,12 @@ section {
 .card-description {
     background-color: white;
     width: 60%;
-    position: relative;
 }
 
 .card-description * {
     margin-left: 15px;
     margin-top: 5px;
     font-size: 0.85em;
-}
-
-.update-time {
-    margin: 0;
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
 }
 
 .country-name {

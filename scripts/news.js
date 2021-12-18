@@ -1,10 +1,9 @@
-var request = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
 
-request.open('GET', 'https://newsapi.org/v2/everything?q=(+covid AND +travel ban) OR (+covid AND +restrictions AND +cases) OR (+covid AND +vaccince AND +cases)&language=en&from=2021-12-18&pageSize=100&page=1&sortBy=popularity&apiKey=561b27fec7c643e7931cce90920199a7', true)
+xhr.open('GET', 'https://newsapi.org/v2/everything?q=(+covid AND +travel ban) OR (+covid AND +restrictions AND +cases) OR (+covid AND +vaccince AND +cases)&language=en&from=2021-12-18&pageSize=100&page=1&sortBy=popularity&apiKey=561b27fec7c643e7931cce90920199a7', true)
 
-request.onload = function () {
+xhr.onload = function () {
     var data = JSON.parse(this.response)
-    console.log(data)
 
     data.articles.forEach(news => {
         card = document.createElement("div")
@@ -35,4 +34,4 @@ request.onload = function () {
     });
 }
 
-request.send()
+xhr.send()
