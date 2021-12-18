@@ -27,13 +27,14 @@
 }
 
 input[type=text] {
+  color: white;
   background-color:#303239;
   border: #414249 1px solid;
   border-radius: 10px;
   padding: 8px;
 }
 
-input:focus {
+input[type=text]:focus {
   outline: #FFC043 solid 1px;
 }
 
