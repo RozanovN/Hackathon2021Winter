@@ -1,4 +1,4 @@
-body{
+body {
     background: #303239;
     margin: 0;
     padding-bottom: 8vh;
@@ -23,11 +23,11 @@ section {
     width: 100%;
 }
 
-#section-header > h1 {
+#section-header>h1 {
     width: 50%;
 }
 
-footer{
+footer {
     background: black;
     position: fixed;
     bottom: 0;
@@ -42,7 +42,8 @@ footer{
     align-items: center;
     justify-content: space-around;
 }
-#bottom-navbar > a {
+
+#bottom-navbar>a {
     color: white;
     text-decoration: none;
     text-align: center;
@@ -50,4 +51,35 @@ footer{
 
 .active {
     color: #FFC043 !important;
+}
+
+#search-bar {
+    border-radius: 10px;
+    width: auto;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5vh;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#search-icon {
+    margin-left: 5%;
+}
+
+input[type=text] {
+    width: 100%;
+    margin-top: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 19px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+
+input[type=text]:focus {
+    outline: none;
 }
