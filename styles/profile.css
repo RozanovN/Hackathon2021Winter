@@ -121,3 +121,17 @@ p {
 .container input:checked ~ .checkmark:after {
   display: block;
 }
+
+#submit {
+  background-color: #5384EC;
+  border: #414249 1px solid;
+  width: 90%;
+  height: 32px;
+  margin: 15px;
+  border-radius: 15px;
+  color: white;
+}
+
+#submit:focus {
+  background-color: #FFC043;
+}
