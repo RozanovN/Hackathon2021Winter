@@ -30,7 +30,7 @@ input[type=text]:focus {
 
 #picture {
     height: 35vh;
-    background: url("../images/index.png");
+    background: url("/images/index.png");
     background-size: cover;
     display: flex;
     justify-content: center;
