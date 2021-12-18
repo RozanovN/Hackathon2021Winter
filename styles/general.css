@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 body {
     background: #303239;
     margin: 0;
     padding-bottom: 8vh;
+    font-family: 'Open Sans', sans-serif;
 }
 
 header {
@@ -82,4 +86,9 @@ input[type=text] {
 
 input[type=text]:focus {
     outline: none;
+}
+
+footer {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
 }
