@@ -32,16 +32,29 @@
         <input type="text" placeholder="..." name="password">
       </div>
       <div class="input-container">
-        <label class="input-label">Vaccination Status
-          <br>
-          <div class="toggle-field">
-            <div class="toggle-button">
-              <input type="checkbox">
-              <span class="slider"></span>
-            </div>
-            <p class="status">Vaccinated</p>
-          </div>
-        </label>
+        <p>Vaccination status</p>
+        <div class="radio-field">
+          <label class="container">
+            Vaccinated, first dose
+            <input type="radio" id="first-does" name="vaccination" value="Vaccinated, first dose">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            Vaccinated, second dose
+            <input type="radio" id="second-does" name="vaccination" value="Vaccinated, second dose">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            Vaccinated, third dose
+            <input type="radio" id="third-does" name="vaccination" value="Vaccinated, third dose">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            Unvaccinated
+            <input type="radio" id="unvaccinated" name="vaccination" value="Unvaccinated">
+            <span class="checkmark"></span>
+          </label>
+        </div>
       </div>
       <div class="input-container">
         <label class="input-label">Citizenship</label>
