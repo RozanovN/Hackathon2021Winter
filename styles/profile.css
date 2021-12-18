@@ -9,7 +9,16 @@
   margin: 0 auto;
 }
 
-#content-container {
+#user-icon {
+  font-size: 18rem;
+  text-align: center;
+}
+
+.input-container > p {
+  margin-bottom: 10px;
+}
+
+.content-container {
   border: white 1px solid;
   border-radius: 10px;
 }
@@ -122,16 +131,26 @@ p {
   display: block;
 }
 
-#submit {
+button {
   background-color: #5384EC;
   border: #414249 1px solid;
-  width: 90%;
+  width: 100%;
   height: 32px;
-  margin: 15px;
   border-radius: 15px;
   color: white;
 }
 
-#submit:focus {
+button:focus {
   background-color: #FFC043;
+}
+
+.section-header {
+  display: flex;
+  color: white;
+  height: fit-content;
+  width: 100%;
+}
+
+.section-header>h1 {
+  width: 50%;
 }
