@@ -9,22 +9,6 @@
     margin: 0 auto;
 }
 
-section {
-    margin: 0 auto;
-    width: 90%;
-}
-
-#section-header {
-    display: flex;
-    color: white;
-    height: fit-content;
-    width: 100%;
-}
-
-#section-header > h1 {
-    width: 50%;
-}
-
 /* #sort {
     display: flex;
     width: 50%;
