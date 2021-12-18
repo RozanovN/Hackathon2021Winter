@@ -1,9 +1,16 @@
 function registerUser() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      document.getElementById("content-container").style.visibility = "visible"
+      document.getElementById("profile").style.visibility = "visible";
+      document.getElementByClassName("content-container").style.visibility = "visible";
+      populateInfo();
+      if (document.getElementById("unvaccinated").checked) {
+        document.getElementByID("vaccines").style.visibility = "hidden";
+        document.getElementByID("date").style.visibility = "hidden";
+      }
     } else {
-      document.getElementById("content-container").style.visibility = "hidden"
+      document.getElementById("profile").style.visibility = "hidden";
+      document.getElementByClassName("content-container").style.visibility = "hidden";
       // initialize ui for authentication
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       var uiConfig = {
@@ -50,3 +57,46 @@ function registerUser() {
   });
 }
 registerUser();
+
+
+function populateInfo() {
+  firebase.auth().onAuthStateChanged(user => {
+    // Check if user is signed in:
+    if (user) {
+
+      //go to the correct user document by referencing to the user uid
+      currentUser = db.collection("users").doc(user.uid)
+      //get the document for current user.
+      currentUser.get()
+      .then(userDoc => {
+        var name = userDoc.data().name;
+        var email = userDoc.data().email;
+        var citizenship = userDoc.data().citizenship;
+        var vaccinationStatus = userDoc.data().vaccinationStatus;
+        var vaccineType = userDoc.data().vaccineType;
+        var vaccinationDate = userDoc.data().vaccinationDate;
+
+        document.getElementByClassName("name").value = name;
+        document.getElementByID("email").value = email;
+        document.getElementByID("country").value = citizenship;
+        document.getElementByID("name").value = name;
+        if (vaccinationStatus == "Vaccinated, first dose") {
+          document.getElementById("first-dose").checked = true;
+        }
+        else if (vaccinationStatus == "Vaccinated, second dose") {
+          document.getElementById("second-dose").checked = true;
+        }
+        else if (vaccinationStatus == "Vaccinated, third dose") {
+          document.getElementById("third-dose").checked = true;
+        }
+        else {
+          document.getElementById("unvaccinated").checked = true;
+        }
+        document.getElementByID("vaccines").value = vaccineType;
+        document.getElementByID("day").value = vaccinationDate[0];
+        document.getElementByID("month").value = vaccinationDate[1];
+        document.getElementByID("year").value = vaccinationDate[2];
+      })
+    }
+  })
+}
