@@ -7,6 +7,8 @@
     flex-direction: row;
     align-items: center;
     height: 5vh;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 #search-icon {
