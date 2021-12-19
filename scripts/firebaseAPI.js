@@ -11,13 +11,6 @@ const firebaseConfig = {
   storageBucket: "wt2021-6eddd.appspot.com",
   messagingSenderId: "1020688770973",
   appId: "1:1020688770973:web:2a37b2361c91524e467174"
-
-  apiKey: "AIzaSyBY_I2YSG-KSs3rLw2xgDPz2NE2xHkCnKw", //incoming
-  authDomain: "winter-hackathon.firebaseapp.com",
-  projectId: "winter-hackathon",
-  storageBucket: "winter-hackathon.appspot.com",
-  messagingSenderId: "400370685609",
-  appId: "1:400370685609:web:f8f904ca678346889f3bb8"
 };
 
 const app = firebase.initializeApp(firebaseConfig);
