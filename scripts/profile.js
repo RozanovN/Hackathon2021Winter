@@ -74,23 +74,27 @@ function populateInfo() {
         document.getElementsByClassName("name")[1].value = name;
         document.getElementById("email").value = email;
         document.getElementById("country").value = citizenship;
-        document.getElementById("name").value = name;
-        if (vaccinationStatus == "Vaccinated, first dose") {
-          document.getElementById("first-dose").checked = true;
-        }
-        else if (vaccinationStatus == "Vaccinated, second dose") {
-          document.getElementById("second-dose").checked = true;
-        }
-        else if (vaccinationStatus == "Vaccinated, third dose") {
-          document.getElementById("third-dose").checked = true;
+        if (vaccinationStatus != "Unvaccinated") {
+          if (vaccinationStatus == "Vaccinated, first dose") {
+            document.getElementById("first-dose").checked = true;
+          }
+          else if (vaccinationStatus == "Vaccinated, second dose") {
+            document.getElementById("second-dose").checked = true;
+          }
+          else {
+            document.getElementById("third-dose").checked = true;
+          }
+          document.getElementById("vaccines").value = vaccineType;
+          document.getElementById("day").value = vaccinationDate[0];
+          document.getElementById("month").value = vaccinationDate[1];
+          document.getElementById("year").value = vaccinationDate[2];
         }
         else {
           document.getElementById("unvaccinated").checked = true;
+          document.getElementsByClassName("input-container")[6].style.display = "none";
+          document.getElementsByClassName("input-container")[7].style.display = "none";
         }
-        document.getElementById("vaccines").value = vaccineType;
-        document.getElementById("day").value = vaccinationDate[0];
-        document.getElementById("month").value = vaccinationDate[1];
-        document.getElementById("year").value = vaccinationDate[2];
+        
       })
     }
   })
