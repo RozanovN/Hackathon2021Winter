@@ -140,6 +140,14 @@ button {
   color: white;
 }
 
+#skip {
+  background-color: #414249;
+}
+
+#skip:focus {
+  background-color: #FFC043;
+}
+
 button:focus {
   background-color: #FFC043;
 }
