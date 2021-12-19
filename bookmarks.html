@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Bookmarks</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-        <!-- Google Icons (Material Design)-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-        <!-- Style -->
-        <link href="/styles/general.css" rel="stylesheet">
-        <link href="/styles/bookmarks.css" rel="stylesheet">
-       </head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmarks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Style -->
+    <link href="/styles/general.css" rel="stylesheet">
+    <link href="/styles/bookmarks.css" rel="stylesheet">
+</head>
+
 <body>
     <header>
         <div id="search-bar">
@@ -19,24 +21,36 @@
             <input type="text" placeholder="Search for any country...">
         </div>
     </header>
-    <div id="section-header">
-        <h1>Explore</h1>
-        <div id="sort">
-            <div id="sort-option">A-Z</div>
-            <div id="sort-icon" class="material-icons">
-                filter_list
+    <section>
+        <div id="section-header">
+            <h1>Bookmarks</h1>
+        </div>
+        <div class="country-card">
+            <h4>TAIWAN -</h4>
+            <p>no updates</p>
+        </div>
+        <div class="country-card">
+            <h4>Australia -</h4>
+            <p>Requirements (updated 3 days)</p>
+            <div class="material-icons">error</div>
+        </div>
+        <div class="card">
+            <img src="/images/taiwan.jpg" alt="Country image" class="country-img">
+            <div class="card-description">
+                <div class="country-name">TAIWAN</div>
+                <div class="covid-stats">New Cases: +6</div>
+                <div class="covid-test">Active Cases: 208</div>
             </div>
         </div>
-    </div>
-    <div class="country-card">
-        <h4>Venezuela -</h4>
-        <p>no updates</p>
-    </div>
-    <div class="country-card">
-        <h4>Australia -</h4>
-        <p>Requirements (updated 3 days)</p>
-        <div class="material-icons">error</div>
-    </div>
+        <div class="card">
+            <img src="/images/australia.jpg" alt="Country image" class="country-img">
+            <div class="card-description">
+                <div class="country-name">Australia</div>
+                <div class="covid-stats">New Cases: +3819</div>
+                <div class="covid-test">Active Cases: 29502</div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div id="bottom-navbar">
@@ -48,4 +62,5 @@
     </footer>
 
 </body>
+
 </html>
