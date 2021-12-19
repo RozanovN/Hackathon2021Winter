@@ -56,6 +56,7 @@ input[type="text"]:focus, #email1:focus, #email2:focus, #password1:focus, #passw
 #email1, #email2, #password1, #password2 {
   text-align: center;
   font-size: 1.2rem;
+  width: 96%;
 }
 
 .radio-field {
@@ -198,4 +199,13 @@ button {
 
 #profile-info {
   text-align: center;
+}
+
+#auth-container, #signup-container {
+  margin: 0 auto;
+  max-width: 450px;
+}
+
+#signup-container input {
+  width: 96%
 }
