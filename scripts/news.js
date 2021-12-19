@@ -28,6 +28,7 @@ xhr.onload = function () {
         newsDescription.appendChild(newsTitle)
 
         card.appendChild(newsDescription)
+        card.setAttribute('onclick', `openNews("${news.url}")`)
 
         section = document.querySelector("section")
         section.appendChild(card)
@@ -35,3 +36,7 @@ xhr.onload = function () {
 }
 
 xhr.send()
+
+function openNews(url) {
+    window.open(url, '_blank', "popup");
+}
