@@ -30,6 +30,7 @@ function populate() {
 
             card = document.createElement("div")
             card.setAttribute("class", "card")
+            card.setAttribute("onclick", "getDetailedInformation('" + countryName + "')")
 
             countryImage = document.createElement("img")
             countryImage.setAttribute("class", "country-img")
@@ -347,3 +348,9 @@ function resetCard() {
 
 document.querySelector("#search-icon").addEventListener("click", searchCountry)
 document.querySelector("section").addEventListener("click", resetCard)
+
+function getDetailedInformation(nameOfCountry) {
+    link = "../countryprofile.html?country-name=" + nameOfCountry;
+    console.log(link);
+    window.location.assign(link);
+}

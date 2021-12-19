@@ -1,7 +1,10 @@
-var country = "Argentina"
-
 function displayCovidData() {
-    db.collection("vaccination-information").doc(country).onSnapshot(vaccineDocs => {
+
+    let parameters = new URL(window.location.href);
+    let countryName = parameters.searchParams.get("country-name");
+    console.log(countryName);
+
+    db.collection("vaccination-information").doc(countryName).onSnapshot(vaccineDocs => {
         document.getElementById("firstdose").innerText = vaccineDocs.data().at_least_one_dose_per_capita;
         document.getElementById("lastupdated").innerText = vaccineDocs.data().date_last_updated;
         document.getElementById("fullyvaccinated").innerText = vaccineDocs.data().fully_vaccinated_per_capita;
@@ -9,7 +12,7 @@ function displayCovidData() {
         document.getElementById("vaccinetype").innerText = vaccineDocs.data().total_vaccine_types;
     });
 
-    db.collection("covid-information").doc(country).onSnapshot(covidDocs => {
+    db.collection("covid-information").doc(countryName).onSnapshot(covidDocs => {
         document.getElementById("geographic").innerText = covidDocs.data().geographic_region;
         document.getElementById("dailydeaths").innerText = covidDocs.data().new_daily_deaths;
         document.getElementById("weeklycases").innerText = covidDocs.data().new_weekly_cases_per_capita;
