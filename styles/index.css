@@ -75,3 +75,7 @@ section {
     font-weight: bolder;
     font-size: 1.3em;
 }
+
+#sort-option {
+    cursor: pointer;
+}
