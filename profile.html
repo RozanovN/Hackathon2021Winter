@@ -36,43 +36,33 @@
       <img src="https://dummyimage.com/50x50/b3b3b3/fff" alt="logo">
   </div>
   <section>
-    <div id="section-header">
+    <div class="section-header">
       <h1>Profile</h1>
     </div>
     <div id="firebaseui-auth-container"></div>
-    <div id="content-container">
+    <div class="content-container">
+      <div class="input-container">
+        <p><span id="user-icon" class="material-icons">account_circle</span></p>
+        <p class="name">Name: </p>
+        <p id="time-as-a-user">You've been with us for: 536 days</p>
+        <button id="loggout">Log out</button>
+      </div>  
+    </div>
+    <div class="section-header">
+      <h1 id="settings">Settings</h1>
+    </div>
+    <div class="content-container">
       <div class="input-container">
           <label class="input-label">Email</label>
-          <input type="text" placeholder="..." name="email">
+          <input id="email" type="text" placeholder="example@example.com" name="email">
       </div>
+      <div class="input-container">
+        <label class="input-label">Name</label>
+        <input class="name" type="text" placeholder="" name="name">
+    </div>
       <div class="input-container">
         <label class="input-label">Password</label>
-        <input type="text" placeholder="..." name="password">
-      </div>
-      <div class="input-container">
-        <p>Vaccination status</p>
-        <div class="radio-field">
-          <label class="container">
-            Vaccinated, first dose
-            <input type="radio" id="first-does" name="vaccination" value="Vaccinated, first dose">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">
-            Vaccinated, second dose
-            <input type="radio" id="second-does" name="vaccination" value="Vaccinated, second dose">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">
-            Vaccinated, third dose
-            <input type="radio" id="third-does" name="vaccination" value="Vaccinated, third dose">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">
-            Unvaccinated
-            <input type="radio" id="unvaccinated" name="vaccination" value="Unvaccinated">
-            <span class="checkmark"></span>
-          </label>
-        </div>
+        <input type="text" placeholder="••••••••••••••••••••••••" name="password">
       </div>
       <div class="input-container">
         <label class="input-label">Citizenship</label>
@@ -324,8 +314,33 @@
         </select>
       </div>
       <div class="input-container">
+        <p>Vaccination status</p>
+        <div class="radio-field">
+          <label class="container">
+            Vaccinated, first dose
+            <input type="radio" id="first-does" name="vaccination" value="Vaccinated, first dose">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            Vaccinated, second dose
+            <input type="radio" id="second-does" name="vaccination" value="Vaccinated, second dose">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            Vaccinated, third dose
+            <input type="radio" id="third-does" name="vaccination" value="Vaccinated, third dose">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">
+            Unvaccinated
+            <input type="radio" id="unvaccinated" name="vaccination" value="Unvaccinated">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      <div class="input-container">
         <label class="input-label">Vaccine Type</label>
-        <select id="Vaccines" name="vaccine" class="form-control">
+        <select id="vaccines" name="vaccine" class="form-control">
           <option>Pfizer vaccine</option>
           <option>Johnson and Johnson</option>
           <option>Moderna vaccine</option>
@@ -396,16 +411,19 @@
           </select>
         </div>
       </div>
+      <div class="input-container"><button id="submit">Save</button></div>
     </div>
   </section>
   <footer>
     <div id="bottom-navbar">
       <a href="/index.html"><i class="material-icons">explore</i><br>Explore</a>
-      <a href="/bookmarks.html"><i class="material-icons">star_border</i><br>Bookmarks</a>
+      <a id="bookmarks" href="/bookmarks.html"><i class="material-icons">star_border</i><br>Bookmarks</a>
       <a href="/news.html"><i class="material-icons">newspaper</i><br>News</a>
       <a class="active" href="#"><i class="material-icons">account_circle</i><br>Profile</a>
   </div>
   </footer>
+
+  <script src="/scripts/generalScript.js"></script>
 </body>
 
 </html>

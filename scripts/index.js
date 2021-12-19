@@ -4,6 +4,7 @@ xhr.withCredentials = true;
 
 xhr.onload = function () {
     var data = JSON.parse(this.response);
+    // console.log(data);
 
     data.response.forEach(country => {
         countryName = country.country;
@@ -44,6 +45,7 @@ xhr.onload = function () {
         cardDescription.appendChild(countryActiveCases)
 
         card.appendChild(cardDescription)
+        card.setAttribute("data-newcase", newCases)
 
         section = document.querySelector("section")
         section.appendChild(card)
@@ -85,3 +87,44 @@ async function getCSVdata() {
 
     getCSVdata();
 }
+function sortAsc() {
+    console.log("testing")
+    let itemList = []
+
+    let cards = document.querySelectorAll(".card")
+    cards.forEach(function (card) {
+        itemList.push(card)
+    })
+
+    itemList.sort(function (a, b) {
+        if (a.dataset.newcase != "0") {
+            newCase1 = parseInt(a.dataset.newcase.substr(1))
+        }
+        else {
+            newCase1 = 0
+        }
+        if (b.dataset.newcase != "0") {
+            newCase2 = parseInt(b.dataset.newcase.substr(1))
+        }
+        else {
+            newCase2 = 0
+        }
+        return newCase1 - newCase2
+    })
+   
+    let section = document.querySelector("section")
+    let sortedCards = []
+    for (let i = 0; i < itemList.length; i++) {
+        card = itemList[i]
+        sortedCards.push(card)
+    }
+    for (let i = 0; i < itemList.length; i++) {
+        itemList[i].remove()
+    }
+    for (let i = 0; i < sortedCards.length; i++) {
+        card = sortedCards[i]
+        section.appendChild(card)
+    }
+}
+
+document.querySelector("#sort-option").addEventListener("click", sortAsc)
