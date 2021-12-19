@@ -61,7 +61,7 @@
     </div>
 
     <div class="content-container">
-      <div class="input-container">
+      <div id="profile-info" class="input-container">
         <p><span id="user-icon" class="material-icons">account_circle</span></p>
         <p class="name">Name: </p>
         <p id="time-as-a-user">You've been with us for: 536 days</p>
@@ -74,11 +74,11 @@
     <div class="content-container">
       <div class="input-container">
           <label class="input-label">Email</label>
-          <input id="email" type="text" placeholder="example@example.com" name="email">
+          <input id="email-box" type="text" placeholder="example@example.com" name="email">
       </div>
       <div class="input-container">
         <label class="input-label">Name</label>
-        <input class="name" type="text" placeholder="" name="name">
+        <input id="name-box" class="name" type="text" placeholder="" name="name">
     </div>
       <div class="input-container">
         <label class="input-label">Password</label>
@@ -339,26 +339,26 @@
           <label class="container">
             Vaccinated, first dose
             <input type="radio" id="first-dose" name="vaccination" value="Vaccinated, first dose">
-            <span class="checkmark"></span>
+            <span id="radio-1" class="checkmark"></span>
           </label>
           <label class="container">
             Vaccinated, second dose
             <input type="radio" id="second-dose" name="vaccination" value="Vaccinated, second dose">
-            <span class="checkmark"></span>
+            <span id="radio-2" class="checkmark"></span>
           </label>
           <label class="container">
             Vaccinated, third dose
             <input type="radio" id="third-dose" name="vaccination" value="Vaccinated, third dose">
-            <span class="checkmark"></span>
+            <span id="radio-3" class="checkmark"></span>
           </label>
           <label class="container">
             Unvaccinated
             <input type="radio" id="unvaccinated" name="vaccination" value="Unvaccinated">
-            <span class="checkmark"></span>
+            <span id="radio-4" class="checkmark"></span>
           </label>
         </div>
       </div>
-      <div class="input-container">
+      <div id="vaccines-type" class="input-container">
         <label class="input-label">Vaccine Type</label>
         <select id="vaccines" name="vaccine" class="form-control">
           <option>Pfizer vaccine</option>
@@ -373,8 +373,8 @@
           <option>CanSino vaccine</option>
         </select>
       </div>
-      <div class="input-container">
-        <label class="input-label">Date of Vaccination</label>
+      <div id="date" class="input-container">
+        <label class="input-label">Date of Last Vaccination</label>
         <div class="date">
           <select id="day" name="day" class="form-control">
             <option>1</option>
@@ -431,7 +431,7 @@
           </select>
         </div>
       </div>
-      <div class="input-container"><button id="submit">Save</button></div>
+      <div class="input-container"><button id="submit" onclick="save()">Save</button></div>
     </div>
   </section>
 

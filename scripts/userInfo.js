@@ -1,15 +1,21 @@
 document.getElementById("form").style.display = "block";
 
 var radioButton = document.getElementById("unvaccinated");
-radioButton.addEventListener('change', function () {
-  if (this.checked) {
-    document.getElementsByClassName("input-container")[2].style.display = "none";
-    document.getElementsByClassName("input-container")[3].style.display = "none";
-  }
-  else if (document.getElementById("first-dose").checked || document.getElementById("second-dose").checked || document.getElementById("third-dose").checked) {
-    document.getElementsByClassName("input-container")[2].style.display = "block";
-    document.getElementsByClassName("input-container")[3].style.display = "block";
-  }
+document.getElementById("radio-1").addEventListener("click", () => {
+  document.getElementById("vaccines-type").style.display = "flex";
+  document.getElementById("date").style.display = "flex";
+})
+document.getElementById("radio-2").addEventListener("click", () => {
+  document.getElementById("vaccines-type").style.display = "flex";
+  document.getElementById("date").style.display = "flex";
+})
+document.getElementById("radio-3").addEventListener("click", () => {
+  document.getElementById("vaccines-type").style.display = "flex";
+  document.getElementById("date").style.display = "flex";
+})
+document.getElementById("radio-4").addEventListener("click", () => {
+  document.getElementById("vaccines-type").style.display = "none";
+  document.getElementById("date").style.display = "none";
 })
 
 function save() {

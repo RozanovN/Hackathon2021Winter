@@ -4,6 +4,22 @@ function registerUser() {
       document.getElementById("settings").style.display = "block";
       document.getElementsByClassName("content-container")[0].style.display = "block";
       document.getElementsByClassName("content-container")[1].style.display = "block";
+      document.getElementById("radio-1").addEventListener("click", () => {
+        document.getElementById("vaccines-type").style.display = "flex";
+        document.getElementById("date").style.display = "flex";
+      })
+      document.getElementById("radio-2").addEventListener("click", () => {
+        document.getElementById("vaccines-type").style.display = "flex";
+        document.getElementById("date").style.display = "flex";
+      })
+      document.getElementById("radio-3").addEventListener("click", () => {
+        document.getElementById("vaccines-type").style.display = "flex";
+        document.getElementById("date").style.display = "flex";
+      })
+      document.getElementById("radio-4").addEventListener("click", () => {
+        document.getElementById("vaccines-type").style.display = "none";
+        document.getElementById("date").style.display = "none";
+      })
       populateInfo();
       if (document.getElementById("unvaccinated").checked) {
         document.getElementById("vaccines").style.display = "none";
@@ -63,6 +79,7 @@ function signUp() {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in 
+      var user = userCredential.user;
       db.collection("users").doc(user.uid).set({
         name: name,
         email: user.email
@@ -102,25 +119,29 @@ function populateInfo() {
 
           document.getElementsByClassName("name")[0].innerHTML += name;
           document.getElementsByClassName("name")[1].value = name;
-          document.getElementById("email").value = email;
+          document.getElementById("email-box").value = email;
           document.getElementById("country").value = citizenship;
-          document.getElementById("name").value = name;
-          if (vaccinationStatus == "Vaccinated, first dose") {
-            document.getElementById("first-dose").checked = true;
-          }
-          else if (vaccinationStatus == "Vaccinated, second dose") {
-            document.getElementById("second-dose").checked = true;
-          }
-          else if (vaccinationStatus == "Vaccinated, third dose") {
-            document.getElementById("third-dose").checked = true;
+          document.getElementById("name-box").value = name;
+          if (vaccinationStatus == "Unvaccinated") {
+            document.getElementById("unvaccinated").checked = true;
+            document.getElementById("vaccines-type").style.display = "none";
+            document.getElementById("date").style.display = "none";
           }
           else {
-            document.getElementById("unvaccinated").checked = true;
+            document.getElementById("vaccines").value = vaccineType;
+            if (vaccinationStatus == "Vaccinated, first dose") {
+              document.getElementById("first-dose").checked = true;
+            }
+            else if (vaccinationStatus == "Vaccinated, second dose") {
+              document.getElementById("second-dose").checked = true;
+            }
+            else if (vaccinationStatus == "Vaccinated, third dose") {
+              document.getElementById("third-dose").checked = true;
+            }
+            document.getElementById("day").value = vaccinationDate[0];
+            document.getElementById("month").value = vaccinationDate[1];
+            document.getElementById("year").value = vaccinationDate[2];
           }
-          document.getElementById("vaccines").value = vaccineType;
-          document.getElementById("day").value = vaccinationDate[0];
-          document.getElementById("month").value = vaccinationDate[1];
-          document.getElementById("year").value = vaccinationDate[2];
         })
     }
   })
@@ -133,4 +154,63 @@ function logout() {
   }).catch((error) => {
     // An error happened.
   });
+}
+
+function save() {
+  firebase.auth().onAuthStateChanged(user => {
+    currentUser = db.collection("users").doc(user.uid) // gets user collection
+    username = document.getElementById('name-box').value;
+    email = document.getElementById('email-box').value;
+
+    // write the values in database
+    console.log(currentUser)
+    currentUser.update({
+      name: username,
+      email: email
+    })
+
+    firebase.auth().onAuthStateChanged((user) => {
+      // Check if user is signed in:
+      if (user) {
+        user.updateEmail(email)
+      } else {
+        // No user is signed in.
+        console.log("No user is signed in");
+      }
+    });
+    var citizenship = document.getElementById("country").value;
+    var vaccinationStatus = null;
+    if (document.getElementById("first-dose").checked) {
+      vaccinationStatus = "Vaccinated, first dose";
+    }
+    else if (document.getElementById("second-dose").checked) {
+      vaccinationStatus = "Vaccinated, second dose";
+    }
+    else if (document.getElementById("third-dose").checked) {
+      vaccinationStatus = "Vaccinated, third dose";
+    }
+    else {
+      vaccinationStatus = document.getElementById("unvaccinated").value;
+    }
+    if (vaccinationStatus != "Unvaccinated") {
+      console.log("1");
+      var vaccineType = document.getElementById("vaccines").value;
+      var vaccinationDate = [];
+      vaccinationDate.push(document.getElementById("day").value);
+      vaccinationDate.push(document.getElementById("month").value);
+      vaccinationDate.push(document.getElementById("year").value);
+      currentUser.update({
+        "vaccineType": vaccineType,
+        "vaccinationDate": vaccinationDate
+      })
+    }
+    currentUser.update({
+      "citizenship": citizenship,
+      "vaccinationStatus": vaccinationStatus
+    })
+      .then(() => {
+        // go to the next page
+        window.location.assign("../profile.html");
+      })
+  })
 }
