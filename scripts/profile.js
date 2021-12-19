@@ -161,7 +161,7 @@ function save() {
     currentUser = db.collection("users").doc(user.uid) // gets user collection
     username = document.getElementById('name-box').value;
     email = document.getElementById('email-box').value;
-
+        
     // write the values in database
     console.log(currentUser)
     currentUser.update({
@@ -178,6 +178,7 @@ function save() {
         console.log("No user is signed in");
       }
     });
+
     var citizenship = document.getElementById("country").value;
     var vaccinationStatus = null;
     if (document.getElementById("first-dose").checked) {
