@@ -41,6 +41,10 @@ section {
     margin: auto 0;
 }
 
+#search-icon {
+    cursor: pointer;
+}
+
 #sort-icon {
     cursor: pointer;
     transform: translateY(-3px);
@@ -54,6 +58,7 @@ section {
     border-radius: 10px;
     overflow: hidden;
     max-width: 500px;
+    transition: 1s;
 }
 
 .card img {

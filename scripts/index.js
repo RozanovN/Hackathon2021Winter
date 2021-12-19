@@ -34,7 +34,7 @@ function populate() {
             countryImage = document.createElement("img")
             countryImage.setAttribute("class", "country-img")
             countryImage.setAttribute("data-country", countryName)
-            countryImage.setAttribute("src", "https://dummyimage.com/600x400/000/fff")
+            countryImage.setAttribute("src", "https://dummyimage.com/600x400/000/fff&text=loading...")
             card.appendChild(countryImage)
 
             cardDescription = document.createElement("div")
@@ -59,6 +59,7 @@ function populate() {
             card.appendChild(cardDescription)
             card.setAttribute("data-newcase", newCases)
             card.setAttribute("data-country", countryName)
+            card.setAttribute("id", countryName.toLowerCase())
 
             section = document.querySelector("section")
             section.appendChild(card)
@@ -79,22 +80,22 @@ function getFlag() {
     countriesImg = document.querySelectorAll(".country-img")
     countriesImg.forEach(img => {
         countryName = img.dataset.country
-        if (countryName == "UK"){
+        if (countryName == "UK") {
             path = "https://restcountries.com/v3.1/alpha/gb"
         }
-        else if (countryName == "New-Zealand"){
+        else if (countryName == "New-Zealand") {
             path = "https://restcountries.com/v3.1/alpha/nz"
         }
-        else if (countryName == "USA"){
+        else if (countryName == "USA") {
             path = "https://restcountries.com/v3.1/name/usa"
         }
-        else if (countryName == "Hong-Kong"){
+        else if (countryName == "Hong-Kong") {
             path = "https://restcountries.com/v3.1/alpha/hk"
         }
-        else if (countryName == "Saudi-Arabia"){
+        else if (countryName == "Saudi-Arabia") {
             path = "https://restcountries.com/v3.1/name/saudi"
         }
-        else if (countryName == "S-Korea"){
+        else if (countryName == "S-Korea") {
             path = "https://restcountries.com/v3.1/alpha/kr"
         }
         else {
@@ -107,7 +108,7 @@ function getFlag() {
                 img.setAttribute("src", data[0].flags.png)
             }
             catch {
-                img.parentNode.remove()
+                img.setAttribute("src", "https://dummyimage.com/600x400/000/ffffff&text=image+not+available")
             }
         };
         xhr.open("GET", path);
@@ -275,3 +276,37 @@ function sortOption() {
         sortAlpha()
     }
 }
+
+function searchCountry() {
+    searchQuery = document.getElementById("search-input").value.toLowerCase()
+    if (searchQuery) {
+        try {
+            allCountries = document.querySelectorAll(".card")
+            allCountries.forEach(country => {
+                country.style.opacity = "0.3"
+                country.style.transform = "scale(1)"
+            })
+            targetCountry = document.getElementById(searchQuery)
+            targetCountry.style.opacity = "1"
+            targetCountry.style.transform = "scale(1.1)"
+            targetCountry.scrollIntoView({
+                block: "center",
+                behavior: "smooth"
+            })
+        }
+        catch {
+            console.log("Not found.")
+        }
+    }
+}
+
+function resetCard() {
+    allCountries = document.querySelectorAll(".card")
+    allCountries.forEach(country => {
+        country.style.opacity = "1"
+        country.style.transform = "scale(1)"
+    })
+}
+
+document.querySelector("#search-icon").addEventListener("click", searchCountry)
+document.querySelector("section").addEventListener("click", resetCard)
