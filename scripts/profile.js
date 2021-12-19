@@ -1,16 +1,15 @@
 function registerUser() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      document.getElementById("profile").style.visibility = "visible";
-      document.getElementByClassName("content-container").style.visibility = "visible";
       populateInfo();
       if (document.getElementById("unvaccinated").checked) {
         document.getElementByID("vaccines").style.visibility = "hidden";
         document.getElementByID("date").style.visibility = "hidden";
       }
     } else {
-      document.getElementById("profile").style.visibility = "hidden";
-      document.getElementByClassName("content-container").style.visibility = "hidden";
+      document.getElementById("settings").style.visibility = "hidden";
+      document.getElementsByClassName("content-container")[0].style.visibility = "hidden";
+      document.getElementsByClassName("content-container")[1].style.visibility = "hidden";
       // initialize ui for authentication
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       var uiConfig = {
@@ -76,7 +75,8 @@ function populateInfo() {
         var vaccineType = userDoc.data().vaccineType;
         var vaccinationDate = userDoc.data().vaccinationDate;
 
-        document.getElementByClassName("name").value = name;
+        document.getElementsByClassName("name")[0].innerHTML += name;
+        document.getElementsByClassName("name")[1].value = name;
         document.getElementByID("email").value = email;
         document.getElementByID("country").value = citizenship;
         document.getElementByID("name").value = name;
