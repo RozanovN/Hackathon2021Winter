@@ -203,7 +203,7 @@ button {
   text-align: center;
 }
 
-#auth-container, #signup-container {
+#auth-container, #signup-container, #auth-option {
   margin: 0 auto;
   max-width: 450px;
 }
@@ -216,6 +216,6 @@ button {
   color: red;
 }
 
-#settings-container {
+#settings-container, #form {
   margin-bottom: 4vh;
 }
