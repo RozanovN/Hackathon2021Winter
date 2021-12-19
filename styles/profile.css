@@ -22,6 +22,8 @@
   border: white 1px solid;
   border-radius: 10px;
   display: none;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 #settings {
@@ -41,7 +43,7 @@
 }
 
 input[type="text"], #email1, #email2, #password1, #password2 {
-  width: 93%;
+  width: 96%;
   color: white;
   background-color: #303239;
   border: #414249 1px solid;
@@ -208,4 +210,8 @@ button {
 
 #signup-container input {
   width: 96%
+}
+
+#settings-container {
+  margin-bottom: 4vh;
 }
