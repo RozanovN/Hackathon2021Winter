@@ -79,6 +79,27 @@ function getFlag() {
     countriesImg = document.querySelectorAll(".country-img")
     countriesImg.forEach(img => {
         countryName = img.dataset.country
+        if (countryName == "UK"){
+            path = "https://restcountries.com/v3.1/alpha/gb"
+        }
+        else if (countryName == "New-Zealand"){
+            path = "https://restcountries.com/v3.1/alpha/nz"
+        }
+        else if (countryName == "USA"){
+            path = "https://restcountries.com/v3.1/name/usa"
+        }
+        else if (countryName == "Hong-Kong"){
+            path = "https://restcountries.com/v3.1/alpha/hk"
+        }
+        else if (countryName == "Saudi-Arabia"){
+            path = "https://restcountries.com/v3.1/name/saudi"
+        }
+        else if (countryName == "S-Korea"){
+            path = "https://restcountries.com/v3.1/alpha/kr"
+        }
+        else {
+            path = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
+        }
         xhr = new XMLHttpRequest();
         xhr.onload = function () {
             data = JSON.parse(this.response);
@@ -86,9 +107,10 @@ function getFlag() {
                 img.setAttribute("src", data[0].flags.png)
             }
             catch {
+                img.parentNode.remove()
             }
         };
-        xhr.open("GET", `https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
+        xhr.open("GET", path);
         xhr.send();
     })
 }
