@@ -2,12 +2,15 @@
     width: 100%;
     margin-top: 2vh;
     margin-bottom: 0;
-}
-
-#logo > img {
+  }
+  
+  #logo > img {
     display: block;
     margin: 0 auto;
-}
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+  }
 
 /* #sort {
     display: flex;
