@@ -45,7 +45,7 @@ function save() {
     })
     .then(() => {
         // go to the next page
-        //window.location.assign("../index.html");
+        window.location.assign("../index.html");
     })
   })
 }
