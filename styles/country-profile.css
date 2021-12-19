@@ -188,3 +188,7 @@ body {
 #covid-info div{
   font-weight: bold;
 }
+
+#bottom-div {
+  margin-top: 2em;
+}
