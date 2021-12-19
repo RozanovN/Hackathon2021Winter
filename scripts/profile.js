@@ -3,8 +3,8 @@ function registerUser() {
     if (user) {
       populateInfo();
       if (document.getElementById("unvaccinated").checked) {
-        document.getElementByID("vaccines").style.visibility = "hidden";
-        document.getElementByID("date").style.visibility = "hidden";
+        document.getElementById("vaccines").style.visibility = "hidden";
+        document.getElementById("date").style.visibility = "hidden";
       }
     } else {
       document.getElementById("settings").style.visibility = "hidden";
@@ -23,7 +23,7 @@ function registerUser() {
                   email: user.email //with authenticated user's ID (user.uid)
                 }).then(function () {
                   console.log("New user added to firestore");
-                  window.location.assign("preferences.html"); //re-direct to fpreferences.html after signup
+                  window.location.assign("../user-info.html");
                 })
                 .catch(function (error) {
                   console.log("Error adding new user: " + error);
@@ -32,11 +32,6 @@ function registerUser() {
               return true; // user already registered
             }
             return false; // error
-          },
-          uiShown: function () {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
           }
         },
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
@@ -77,9 +72,9 @@ function populateInfo() {
 
         document.getElementsByClassName("name")[0].innerHTML += name;
         document.getElementsByClassName("name")[1].value = name;
-        document.getElementByID("email").value = email;
-        document.getElementByID("country").value = citizenship;
-        document.getElementByID("name").value = name;
+        document.getElementById("email").value = email;
+        document.getElementById("country").value = citizenship;
+        document.getElementById("name").value = name;
         if (vaccinationStatus == "Vaccinated, first dose") {
           document.getElementById("first-dose").checked = true;
         }
@@ -92,10 +87,10 @@ function populateInfo() {
         else {
           document.getElementById("unvaccinated").checked = true;
         }
-        document.getElementByID("vaccines").value = vaccineType;
-        document.getElementByID("day").value = vaccinationDate[0];
-        document.getElementByID("month").value = vaccinationDate[1];
-        document.getElementByID("year").value = vaccinationDate[2];
+        document.getElementById("vaccines").value = vaccineType;
+        document.getElementById("day").value = vaccinationDate[0];
+        document.getElementById("month").value = vaccinationDate[1];
+        document.getElementById("year").value = vaccinationDate[2];
       })
     }
   })
