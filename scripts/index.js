@@ -280,12 +280,12 @@ function sortOption() {
 function searchCountry() {
     searchQuery = document.getElementById("search-input").value.toLowerCase()
     if (searchQuery) {
+        allCountries = document.querySelectorAll(".card")
+        allCountries.forEach(country => {
+            country.style.opacity = "0.3"
+            country.style.transform = "scale(1)"
+        })
         try {
-            allCountries = document.querySelectorAll(".card")
-            allCountries.forEach(country => {
-                country.style.opacity = "0.3"
-                country.style.transform = "scale(1)"
-            })
             targetCountry = document.getElementById(searchQuery)
             targetCountry.style.opacity = "1"
             targetCountry.style.transform = "scale(1.1)"
@@ -295,7 +295,18 @@ function searchCountry() {
             })
         }
         catch {
-            console.log("Not found.")
+            try {
+                targetCountry = document.querySelector(`[id*=${searchQuery}]`)
+                targetCountry.style.opacity = "1"
+                targetCountry.style.transform = "scale(1.1)"
+                targetCountry.scrollIntoView({
+                    block: "center",
+                    behavior: "smooth"
+                })
+            }
+            catch {
+                console.log("Country not found.")
+            }
         }
     }
 }
