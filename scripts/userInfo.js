@@ -1,3 +1,5 @@
+document.getElementById("form").style.display = "block";
+
 var radioButton = document.getElementById("unvaccinated");
 radioButton.addEventListener('change', function () {
   if (this.checked) {
