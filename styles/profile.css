@@ -21,6 +21,13 @@
 .content-container {
   border: white 1px solid;
   border-radius: 10px;
+  display: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#settings {
+  display: none;
 }
 
 .input-container {
@@ -35,21 +42,27 @@
   margin-bottom: 5px;
 }
 
-input[type=text] {
-  width: 93%;
+input[type="text"], #email1, #email2, #password1, #password2 {
+  width: 96%;
   color: white;
-  background-color:#303239;
+  background-color: #303239;
   border: #414249 1px solid;
   border-radius: 10px;
   padding: 8px;
 }
 
-input[type=text]:focus {
-  outline: #FFC043 solid 1px;
+input[type="text"]:focus, #email1:focus, #email2:focus, #password1:focus, #password2:focus {
+  outline: #ffc043 solid 1px;
+}
+
+#email1, #email2, #password1, #password2 {
+  text-align: center;
+  font-size: 1.2rem;
+  width: 96%;
 }
 
 .radio-field {
-  background-color:#303239;
+  background-color: #303239;
   border: #414249 1px solid;
   border-radius: 10px;
   width: 100%;
@@ -67,7 +80,7 @@ input[type=text]:focus {
 }
 
 select {
-  background-color:#303239;
+  background-color: #303239;
   border: #414249 1px solid;
   border-radius: 10px;
   padding: 8px;
@@ -118,7 +131,7 @@ p {
 }
 
 .container input:checked ~ .checkmark {
-  background-color: #FFC043;
+  background-color: #ffc043;
 }
 
 .checkmark:after {
@@ -132,7 +145,7 @@ p {
 }
 
 button {
-  background-color: #5384EC;
+  background-color: #5384ec;
   border: #414249 1px solid;
   width: 100%;
   height: 32px;
@@ -145,11 +158,11 @@ button {
 }
 
 #skip:focus {
-  background-color: #FFC043;
+  background-color: #ffc043;
 }
 
-button:focus {
-  background-color: #FFC043;
+button:hover {
+  background-color: #ffc043;
 }
 
 .section-header {
@@ -159,6 +172,50 @@ button:focus {
   width: 100%;
 }
 
-.section-header>h1 {
+.section-header > h1 {
   width: 50%;
+}
+
+button {
+  cursor: pointer;
+}
+
+#auth-option, #auth-container, #signup-container {
+  display: none;
+}
+
+#auth-option {
+  flex-direction: column;
+}
+
+#auth-option button {
+  width: 70%;
+  margin: 0 auto 1em auto;
+}
+
+#auth-container button, #signup-container button {
+  display: block;
+  margin: 1em auto 0 auto;
+  width: 100%;
+}
+
+#profile-info {
+  text-align: center;
+}
+
+#auth-container, #signup-container {
+  margin: 0 auto;
+  max-width: 450px;
+}
+
+#signup-container input {
+  width: 96%
+}
+
+.error {
+  color: red;
+}
+
+#settings-container {
+  margin-bottom: 4vh;
 }

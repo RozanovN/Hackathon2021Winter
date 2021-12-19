@@ -37,7 +37,7 @@
     <div class="section-header">
       <h1>User Info</h1>
     </div>
-    <div class="content-container">
+    <div id="form" class="content-container">
       <div class="input-container">
         <label class="input-label">Citizenship</label>
         <select id="country" name="country" class="form-control">
@@ -293,26 +293,26 @@
           <label class="container">
             Vaccinated, first dose
             <input type="radio" id="first-dose" name="vaccination" value="Vaccinated, first dose">
-            <span class="checkmark"></span>
+            <span id="radio-1" class="checkmark"></span>
           </label>
           <label class="container">
             Vaccinated, second dose
             <input type="radio" id="second-dose" name="vaccination" value="Vaccinated, second dose">
-            <span class="checkmark"></span>
+            <span id="radio-2" class="checkmark"></span>
           </label>
           <label class="container">
             Vaccinated, third dose
             <input type="radio" id="third-dose" name="vaccination" value="Vaccinated, third dose">
-            <span class="checkmark"></span>
+            <span id="radio-3" class="checkmark"></span>
           </label>
           <label class="container">
             Unvaccinated
             <input type="radio" id="unvaccinated" name="vaccination" value="Unvaccinated">
-            <span class="checkmark"></span>
+            <span id="radio-4" class="checkmark"></span>
           </label>
         </div>
       </div>
-      <div class="input-container">
+      <div id="vaccines-type" class="input-container">
         <label class="input-label">Vaccine Type</label>
         <select id="vaccines" name="vaccine" class="form-control">
           <option>Pfizer vaccine</option>
@@ -327,8 +327,8 @@
           <option>CanSino vaccine</option>
         </select>
       </div>
-      <div class="input-container">
-        <label class="input-label">Date of Vaccination</label>
+      <div id="date" class="input-container">
+        <label class="input-label">Date of Last Vaccination</label>
         <div class="date">
           <select id="day" name="day" class="form-control">
             <option>1</option>
@@ -386,7 +386,7 @@
         </div>
       </div>
       <div class="input-container"><button id="submit" onclick="save()">Save</button></div>
-      <div class="input-container"><button id="skip">Skip for now</button></div>
+      <div class="input-container"><button id="skip" onclick="window.location.assign('/index.html')">Skip for now</button></div>
     </div>
   </section>
   <footer>
