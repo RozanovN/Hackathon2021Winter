@@ -132,7 +132,7 @@ async function getCSVdata() {
         const deathslastweekpercapita = parseInt(columns[10]); // deaths last week per capita
         const deathlast24hours = parseInt(columns[11]); // deaths in last 24 hours
 
-        db.collection("covid-information").add({ //write to firestore
+        db.collection("covid-information").doc(countryname).set({ //write to firestore
             country_name: countryname,
             geographic_region: geographicregion,
             total_cases_per_capita: cumulativecasespercapita,
@@ -156,13 +156,15 @@ async function getCSVdatasecond() {
         const totalvaccinationsper100 = parseInt(columns[7]); // total doses per capita
         const minimumonedoseper100 = parseInt(columns[8]); // population per capita with at least one dose
         const fullyvaccinatedper100 = parseInt(columns[10]); // fully vaccinated population per capita
+        const totalnumbervaccines = columns[11]; // different types of vaccines administered
 
-        db.collection("vaccination-information").add({ //write to firestore
+        db.collection("vaccination-information").doc(countryname).set({ //write to firestore
             country_name: countryname,
             date_last_updated: lastupdated,
             total_doses_per_capita: totalvaccinationsper100,
             at_least_one_dose_per_capita: minimumonedoseper100,
-            fully_vaccinated_per_capita: fullyvaccinatedper100
+            fully_vaccinated_per_capita: fullyvaccinatedper100,
+            total_vaccine_types: totalnumbervaccines
         })
     });
 }
