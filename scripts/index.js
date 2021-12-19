@@ -4,7 +4,17 @@ xhr.withCredentials = true;
 
 xhr.onload = function () {
     var data = JSON.parse(this.response);
-    // console.log(data);
+    console.log(data.response);
+
+    data.response.sort(function(a, b){
+        if (a.country.toUpperCase() < b.country.toUpperCase()){
+            return -1;
+        }
+        if (a.country.toUpperCase() > b.country.toUpperCase()){
+            return 1;
+        }
+        return 0;
+    })
 
     data.response.forEach(country => {
         countryName = country.country;
@@ -46,6 +56,7 @@ xhr.onload = function () {
 
         card.appendChild(cardDescription)
         card.setAttribute("data-newcase", newCases)
+        card.setAttribute("data-country", countryName)
 
         section = document.querySelector("section")
         section.appendChild(card)
@@ -87,8 +98,7 @@ async function getCSVdata() {
 
     getCSVdata();
 }
-function sortAsc() {
-    console.log("testing")
+function sortCaseAsc() {
     let itemList = []
 
     let cards = document.querySelectorAll(".card")
@@ -125,6 +135,97 @@ function sortAsc() {
         card = sortedCards[i]
         section.appendChild(card)
     }
+
+    document.querySelector("#sort-option").innerHTML = "Least new case"
 }
 
-document.querySelector("#sort-option").addEventListener("click", sortAsc)
+function sortCaseDes() {
+    let itemList = []
+
+    let cards = document.querySelectorAll(".card")
+    cards.forEach(function (card) {
+        itemList.push(card)
+    })
+
+    itemList.sort(function (a, b) {
+        if (a.dataset.newcase != "0") {
+            newCase1 = parseInt(a.dataset.newcase.substr(1))
+        }
+        else {
+            newCase1 = 0
+        }
+        if (b.dataset.newcase != "0") {
+            newCase2 = parseInt(b.dataset.newcase.substr(1))
+        }
+        else {
+            newCase2 = 0
+        }
+        return newCase2 - newCase1
+    })
+   
+    let section = document.querySelector("section")
+    let sortedCards = []
+    for (let i = 0; i < itemList.length; i++) {
+        card = itemList[i]
+        sortedCards.push(card)
+    }
+    for (let i = 0; i < itemList.length; i++) {
+        itemList[i].remove()
+    }
+    for (let i = 0; i < sortedCards.length; i++) {
+        card = sortedCards[i]
+        section.appendChild(card)
+    }
+
+    document.querySelector("#sort-option").innerHTML = "Most new case"
+}
+
+function sortAlpha() {
+    let itemList = []
+
+    let cards = document.querySelectorAll(".card")
+    cards.forEach(function (card) {
+        itemList.push(card)
+    })
+
+    itemList.sort(function (a, b) {
+        if (a.dataset.country.toUpperCase() < b.dataset.country.toUpperCase()){
+            return -1;
+        }
+        if (a.dataset.country.toUpperCase() > b.dataset.country.toUpperCase()){
+            return 1;
+        }
+        return 0;
+    })
+   
+    let section = document.querySelector("section")
+    let sortedCards = []
+    for (let i = 0; i < itemList.length; i++) {
+        card = itemList[i]
+        sortedCards.push(card)
+    }
+    for (let i = 0; i < itemList.length; i++) {
+        itemList[i].remove()
+    }
+    for (let i = 0; i < sortedCards.length; i++) {
+        card = sortedCards[i]
+        section.appendChild(card)
+    }
+
+    document.querySelector("#sort-option").innerHTML = "Alphabatical order"
+}
+
+document.querySelector("#sort-icon").addEventListener("click", sortOption)
+
+function sortOption() {
+    current = document.querySelector("#sort-option").innerHTML
+    if (current == "Alphabatical order"){
+        sortCaseAsc()
+    }
+    if (current == "Least new case"){
+        sortCaseDes()
+    }
+    if (current == "Most new case"){
+        sortAlpha()
+    }
+}
