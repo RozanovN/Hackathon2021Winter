@@ -118,33 +118,57 @@ function getFlag() {
 
 populate()
 
-// READ data from CSV and WRITE to database
+// READ data from CSV and WRITE covid deaths / infections to database
 async function getCSVdata() {
+    const response = await fetch("COVID19data.csv"); //send get request
+    const data = await response.text(); //get file response
+    const list = data.split('\n').slice(1); //get line 
+    list.forEach(row => {
+        const columns = row.split(","); //get token 
+        const countryname = columns[0]; // countryname
+        const geographicregion = columns[1]; // geographic region
+        const cumulativecasespercapita = parseInt(columns[3]); // total cases per capita
+        const newcasesperweekpercapita = parseInt(columns[5]); // new cases per week per capita
+        const deathslastweekpercapita = parseInt(columns[10]); // deaths last week per capita
+        const deathlast24hours = parseInt(columns[11]); // deaths in last 24 hours
+
+        db.collection("covid-information").add({ //write to firestore
+            country_name: countryname,
+            geographic_region: geographicregion,
+            total_cases_per_capita: cumulativecasespercapita,
+            new_weekly_cases_per_capita: newcasesperweekpercapita,
+            new_weekly_deaths_per_capita: deathslastweekpercapita,
+            new_daily_deaths: deathlast24hours
+        })
+    });
+}
+// getCSVdata();
+
+// READ data from CSV and WRITE vaccination data to database
+async function getCSVdatasecond() {
     const response = await fetch("vaccination-data.csv"); //send get request
     const data = await response.text(); //get file response
     const list = data.split('\n').slice(1); //get line 
     list.forEach(row => {
         const columns = row.split(","); //get token 
         const countryname = columns[0]; // countryname
-        console.log(countryname);
-        const geographicregion = columns[1]; // geographic region
-        // const cumulativecasespercapita = parseInt(columns[3]); // author name
-        // const newcasesperweekpercapita = parseInt(columns[5]);
-        // const deathslastweekpercapita = parseInt(columns[10]);
-        // const deathlast24hours = parseInt(columns[11]);
+        const lastupdated = columns[4]; // date information was updated
+        const totalvaccinationsper100 = parseInt(columns[7]); // total doses per capita
+        const minimumonedoseper100 = parseInt(columns[8]); // population per capita with at least one dose
+        const fullyvaccinatedper100 = parseInt(columns[10]); // fully vaccinated population per capita
 
-        db.collection("covid-information").add({ //write to firestore
+        db.collection("vaccination-information").add({ //write to firestore
             country_name: countryname,
-            geographic_region: geographicregion,
-            // total_cases_per_capita: cumulativecasespercapita,
-            // new_weekly_cases_per_capita: newcasesperweekpercapita,
-            // new_weekly_deaths_per_capita: deathslastweekpercapita,
-            // new_daily_deaths: deathlast24hours
+            date_last_updated: lastupdated,
+            total_doses_per_capita: totalvaccinationsper100,
+            at_least_one_dose_per_capita: minimumonedoseper100,
+            fully_vaccinated_per_capita: fullyvaccinatedper100
         })
     });
-
-    getCSVdata();
 }
+
+// getCSVdatasecond();
+
 function sortCaseAsc() {
     let itemList = []
 
