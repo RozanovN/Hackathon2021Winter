@@ -67,6 +67,12 @@ function signIn() {
     })
     .catch((error) => {
       var errorMessage = error.message;
+      if (errorMessage == "The email address is badly formatted.") {
+        document.getElementById("email-auth").innerHTML += '<span class="error">The email address is not formatted properly.</span>';
+      }
+      else {
+        document.getElementById("pwd-auth").innerHTML += '<span class="error">The password is invalid.</span>';
+      }
       console.log(errorMessage)
     });
 }
@@ -96,6 +102,12 @@ function signUp() {
     })
     .catch((error) => {
       var errorMessage = error.message;
+      if (errorMessage == "The email address is badly formatted.") {
+        document.getElementById("email-signup").innerHTML += '<span class="error">The email address is not formatted properly.</span>';
+      }
+      else {
+        document.getElementById("pwd-signup").innerHTML += '<span class="error">The password must be 6 characters long or more.</span>';
+      }
       console.log(errorMessage)
     });
 }

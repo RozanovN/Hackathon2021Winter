@@ -209,3 +209,7 @@ button {
 #signup-container input {
   width: 96%
 }
+
+.error {
+  color: red;
+}
