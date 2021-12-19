@@ -5,21 +5,12 @@
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-<<<<<<< HEAD
-  apiKey: "AIzaSyBY_I2YSG-KSs3rLw2xgDPz2NE2xHkCnKw", //incoming
-  authDomain: "winter-hackathon.firebaseapp.com",
-  projectId: "winter-hackathon",
-  storageBucket: "winter-hackathon.appspot.com",
-  messagingSenderId: "400370685609",
-  appId: "1:400370685609:web:f8f904ca678346889f3bb8"
-=======
   apiKey: "AIzaSyAMCH94jj2lTStKkYEz4ruGdabOubKYZpc",
   authDomain: "wt2021-6eddd.firebaseapp.com",
   projectId: "wt2021-6eddd",
   storageBucket: "wt2021-6eddd.appspot.com",
   messagingSenderId: "1020688770973",
   appId: "1:1020688770973:web:2a37b2361c91524e467174"
->>>>>>> refs/remotes/origin/main
 };
 
 const app = firebase.initializeApp(firebaseConfig);
