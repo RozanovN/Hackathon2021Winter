@@ -85,3 +85,12 @@ section {
 #sort-option {
     pointer-events: none;
 }
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card:active {
+    opacity: 0.5;
+    transform: translateY(4px);
+  }
