@@ -286,14 +286,14 @@ function sortAlpha() {
         section.appendChild(card)
     }
 
-    document.querySelector("#sort-option").innerHTML = "Alphabatical order"
+    document.querySelector("#sort-option").innerHTML = "Alphabetical order"
 }
 
 document.querySelector("#sort-icon").addEventListener("click", sortOption)
 
 function sortOption() {
     current = document.querySelector("#sort-option").innerHTML
-    if (current == "Alphabatical order") {
+    if (current == "Alphabetical order") {
         sortCaseAsc()
     }
     if (current == "Least new case") {

@@ -173,6 +173,7 @@ button:hover {
   color: white;
   height: fit-content;
   width: 100%;
+  justify-content:center;
 }
 
 .section-header > h1 {
@@ -221,4 +222,10 @@ button {
 
 #settings-container, #form {
   margin-bottom: 4vh;
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40pt;
+  text-align: center;
 }

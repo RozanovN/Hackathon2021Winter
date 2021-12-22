@@ -80,3 +80,9 @@ h4 {
     font-weight: bolder;
     font-size: 1.3em;
 }
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 40pt;
+    text-align: center;
+}
